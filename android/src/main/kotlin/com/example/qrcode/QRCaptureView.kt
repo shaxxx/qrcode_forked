@@ -159,31 +159,37 @@ class QRCaptureView(
         checkAndRequestPermission(null)
         activity.application.registerActivityLifecycleCallbacks(
             object : Application.ActivityLifecycleCallbacks {
-                override fun onActivityPaused(p0: Activity?) {
-                    if (p0 == activity) {
-                        barcodeView?.pause()
-                    }
+
+                override fun onActivityCreated(p0: Activity, p1: Bundle?) {
+
                 }
 
-                override fun onActivityResumed(p0: Activity?) {
+                override fun onActivityStarted(p0: Activity) {
+
+                }
+
+                override fun onActivityResumed(p0: Activity) {
                     if (p0 == activity) {
                         barcodeView?.resume()
                     }
                 }
 
-                override fun onActivityStarted(p0: Activity?) {
+                override fun onActivityPaused(p0: Activity) {
+                    if (p0 == activity) {
+                        barcodeView?.pause()
+                    }
                 }
 
-                override fun onActivityDestroyed(p0: Activity?) {
+                override fun onActivityStopped(p0: Activity) {
+
                 }
 
-                override fun onActivitySaveInstanceState(p0: Activity?, p1: Bundle?) {
+                override fun onActivitySaveInstanceState(p0: Activity, p1: Bundle) {
+
                 }
 
-                override fun onActivityStopped(p0: Activity?) {
-                }
+                override fun onActivityDestroyed(p0: Activity) {
 
-                override fun onActivityCreated(p0: Activity?, p1: Bundle?) {
                 }
 
             }
@@ -192,15 +198,15 @@ class QRCaptureView(
     }
 
     override fun onDetachedFromActivityForConfigChanges() {
-        TODO("Not yet implemented")
+
     }
 
     override fun onReattachedToActivityForConfigChanges(binding: ActivityPluginBinding) {
-        TODO("Not yet implemented")
+
     }
 
     override fun onDetachedFromActivity() {
-        TODO("Not yet implemented")
+
     }
 
 }
